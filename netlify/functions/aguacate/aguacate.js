@@ -1,5 +1,5 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
-import fetch from 'node-fetch';
+const fetch = require('node-fetch')
 
 function sendMessage(url, message) {
   console.log("Y por aca dentro también!")
