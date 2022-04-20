@@ -86,7 +86,7 @@ function sendDiscordWebhook(url, message) {
 
 const handler = async (event) => {
   try {
-    console.log("deploy succeeded!")
+    console.log("deploy failed!")
     sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
     sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
     return {
