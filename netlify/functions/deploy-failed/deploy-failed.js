@@ -2,12 +2,15 @@
 const fetch = require('node-fetch')
 
 function handleErrors(response) {
+  console.log("Obtuvimos respuesta!")
+  console.log(JSON.stringify(response))
   if (!response.ok) {
+      console.log("Obtuvimos respuesta fallida!")
       throw Error(response.statusText);
   }
+  console.log("Obtuvimos respuesta OK!")
   return response;
 }
-
 function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
   fetch(url, {
