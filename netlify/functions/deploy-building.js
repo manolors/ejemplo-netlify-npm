@@ -27,7 +27,7 @@ async function sendDiscordWebhook(url, message) {
   }
 }
 
-const handler = async (event, payload) => {
+const handler = async (event) => {
   console.log("deploy building!")
   const site = JSON.parse(event.body).site.name
 

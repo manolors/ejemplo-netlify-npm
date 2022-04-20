@@ -26,7 +26,7 @@ async function sendDiscordWebhook(url, message) {
   }
 }
 
-const handler = async (event, payload, context) => {
+const handler = async (event) => {
   try {
     const site = JSON.parse(event.body).site.name
     await sendDiscordWebhook(process.env.WEBHOOK_URL, {
