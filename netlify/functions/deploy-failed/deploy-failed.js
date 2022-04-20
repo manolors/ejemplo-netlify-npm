@@ -1,6 +1,13 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 const fetch = require('node-fetch')
 
+function handleErrors(response) {
+  if (!response.ok) {
+      throw Error(response.statusText);
+  }
+  return response;
+}
+
 function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
   fetch(url, {
@@ -9,17 +16,19 @@ function sendDiscordWebhook(url, message) {
       'Content-Type': 'application/json',
     },
     body : JSON.stringify(message)
-  }).then(() => {
+  }).then(handleErrors)
+  .then(() => {
     console.log("mensaje enviado")
   }).catch(function(error) {
     console.log('Hubo un problema con la petición Fetch:' + error.message);
   })
 }
+
 const handler = async (event) => {
   try {
     console.log("deploy failed!")
-    sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
-    sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
+    sendDiscordWebhook(lof, { content: JSON.stringify(event) })
+    sendDiscordWebhook(lof, { content: JSON.stringify(process.env) })
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Message sent` }),
