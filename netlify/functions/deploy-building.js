@@ -35,7 +35,7 @@ const handler = async (event) => {
     await sendDiscordWebhook(process.env.WEBHOOK_URL, {
       "username": "Deploy Bot Building!",
       "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Ambox_warning_yellow.svg/1280px-Ambox_warning_yellow.svg.png",
-      "content": `The site "*${site}*" deploy has started!`,
+      "content": `The site "***${site}***" deploy has started!`,
     })
 
     return {
