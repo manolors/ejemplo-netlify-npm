@@ -16,11 +16,13 @@ function sendDiscordWebhook(url, message) {
   })
 }
 
-const handler = async (event) => {
+const handler = async (event, payload) => {
   console.log("deploy building!")
   try {
     sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
     sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
+    sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(payload) })
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Message sent` }),
