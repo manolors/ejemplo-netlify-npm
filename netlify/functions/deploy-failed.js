@@ -11,7 +11,7 @@ function handleErrors(response) {
 async function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
   try {
-    fetch(url, {
+    await fetch(url, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
