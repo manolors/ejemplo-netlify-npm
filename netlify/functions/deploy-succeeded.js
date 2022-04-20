@@ -28,15 +28,11 @@ async function sendDiscordWebhook(url, message) {
 
 const handler = async (event, payload, context) => {
   try {
-    console.log("deploy succeeded!")
-    console.log(JSON.stringify(event))
-    console.log(JSON.stringify(payload))
-    console.log(JSON.stringify(context))
-
+    const site = JSON.parse(event.body).site.name
     await sendDiscordWebhook(process.env.WEBHOOK_URL, {
       "username": "Deploy Bot OK",
       "avatar_url": "https://www.nicepng.com/png/full/362-3624869_icon-success-circle-green-tick-png.png",
-      "content": "The deploy was successful!",
+      "content": `The site ${site} was deployed successfully!`,
     })
 
     return {

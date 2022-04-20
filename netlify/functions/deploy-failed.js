@@ -29,10 +29,12 @@ async function sendDiscordWebhook(url, message) {
 const handler = async (event, payload) => {
   try {
     console.log("deploy failed!")
+    const site = JSON.parse(event.body).site.name
+
     await sendDiscordWebhook(process.env.WEBHOOK_URL, {
       "username": "Deploy Bot Failure",
       "avatar_url": "https://cdn-icons-png.flaticon.com/512/148/148766.png",
-      "content": "The deploy has failed!",
+      "content": `The site ${site} deploy has failed!`,
     })
 
     return {
