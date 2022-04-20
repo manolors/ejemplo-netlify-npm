@@ -94,7 +94,7 @@ const handler = async (event) => {
   try {
     const subject = event.queryStringParameters.name || 'World'
     console.log("Hola mama, estamos aqui!")
-    sendBasic(url)
+    sendBasic(process.env.WEBHOOK_URL)
     sendMessage(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
     sendMessage(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
     console.log("Y aqui también!")
