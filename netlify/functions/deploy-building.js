@@ -10,17 +10,20 @@ function handleErrors(response) {
 
 function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
-  fetch(url, {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body : JSON.stringify(message)
-  }).then(handleErrors)
-  .then(() => {
-    console.log("mensaje enviado")
-  }).catch(error => console.log(error))
-
+  try {
+    fetch(url, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body : JSON.stringify(message)
+    }).then(handleErrors)
+    .then(() => {
+      console.log("mensaje enviado")
+    }).catch(error => console.log(error))
+  } catch(error) {
+    console.log("Error sending webhook" + error)
+  }
 }
 
 const handler = async (event, payload) => {
