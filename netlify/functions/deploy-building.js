@@ -35,6 +35,7 @@ const handler = async (event, payload) => {
       "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Ambox_warning_yellow.svg/1280px-Ambox_warning_yellow.svg.png",
       "content": "The deploy has started!",
     })
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Message sent` }),
