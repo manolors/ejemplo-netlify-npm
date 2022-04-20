@@ -12,8 +12,8 @@ function sendDiscordWebhook(url, message) {
     body : JSON.stringify(message)
   }).then(() => {
     console.log("mensaje enviado")
-  }).error((error) => {
-    console.log("mensaje no enviado"+ error)
+  }).catch(function(error) {
+    console.log('Hubo un problema con la petición Fetch:' + error.message);
   })
 }
 
