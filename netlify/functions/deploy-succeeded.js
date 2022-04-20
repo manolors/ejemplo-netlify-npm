@@ -32,7 +32,7 @@ const handler = async (event) => {
     await sendDiscordWebhook(process.env.WEBHOOK_URL, {
       "username": "Deploy Bot OK",
       "avatar_url": "https://www.nicepng.com/png/full/362-3624869_icon-success-circle-green-tick-png.png",
-      "content": `The site ${site} was deployed successfully!`,
+      "content": `The site "*${site}*" was deployed successfully!`,
     })
 
     return {
