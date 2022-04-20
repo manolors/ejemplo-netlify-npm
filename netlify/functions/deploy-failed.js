@@ -8,7 +8,7 @@ function handleErrors(response) {
   return response;
 }
 
-function sendDiscordWebhook(url, message) {
+async function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
   try {
     fetch(url, {
@@ -29,8 +29,8 @@ function sendDiscordWebhook(url, message) {
 const handler = async (event) => {
   try {
     console.log("deploy failed!")
-    sendDiscordWebhook(lof, { content: JSON.stringify(event) })
-    sendDiscordWebhook(lof, { content: JSON.stringify(process.env) })
+    await sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
+    await sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Message sent` }),
