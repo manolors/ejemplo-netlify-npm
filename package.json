@@ -30,6 +30,6 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^3.2.3"
+    "node-fetch": "^2.6.7"
   }
 }
