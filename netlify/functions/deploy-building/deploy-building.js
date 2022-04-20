@@ -19,9 +19,8 @@ function sendDiscordWebhook(url, message) {
   }).then(handleErrors)
   .then(() => {
     console.log("mensaje enviado")
-  }).catch(function(error) {
-    console.log('Hubo un problema con la petición Fetch:' + error.message);
-  })
+  }).catch(error => console.log(error))
+
 }
 
 const handler = async (event, payload) => {
