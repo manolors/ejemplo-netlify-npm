@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "rm -rf dist && vite build",
-    "build-dev": "raasdasdm -rf dist && vite build && echo \"Hola, estamos en un PR\"",
+    "build": "rdsafasdfm -rf dist && vite build",
+    "build-dev": "rm -rf dist && vite build && echo \"Hola, estamos en un PR\"",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
