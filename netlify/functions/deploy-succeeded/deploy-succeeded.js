@@ -2,12 +2,18 @@
 const fetch = require('node-fetch')
 
 function sendDiscordWebhook(url, message) {
+  console.log("sending message to " + url)
+
   fetch(url, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
     },
     body : JSON.stringify(message)
+  }).then(() => {
+    console.log("mensaje enviado")
+  }).error((error) => {
+    console.log("mensaje no enviado"+ error)
   })
 }
 
@@ -20,6 +26,7 @@ const handler = async (event) => {
       body: JSON.stringify({ message: `Message sent` }),
     }
   } catch (error) {
+    console.log(error)
     return { statusCode: 500, body: error.toString() }
   }
 }
