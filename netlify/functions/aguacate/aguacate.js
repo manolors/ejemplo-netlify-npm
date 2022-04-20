@@ -1,11 +1,12 @@
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
+import fetch from 'node-fetch';
 
 function sendMessage(url, message) {
   console.log("Y por aca dentro también!")
-  var request = new XMLHttpRequest();
-  request.open("POST", url);
-  request.setRequestHeader('Content-type', 'application/json');
-  request.send(JSON.stringify(message));
+  fetch(url, {
+    username: process.env.USERNAME,
+    content: message
+  })
 }
 
 const handler = async (event) => {
