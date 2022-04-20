@@ -12,7 +12,8 @@ const handler = async (event) => {
   try {
     const subject = event.queryStringParameters.name || 'World'
     console.log("Hola mama, estamos aqui!")
-    sendMessage(process.env.WEBHOOK_URL, { events: event, processenv: process.env })
+    sendMessage(process.env.WEBHOOK_URL, { content: JSON.stringify(event), processenv: process.env })
+    sendMessage(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
     console.log("Y aqui también!")
     return {
       statusCode: 200,
