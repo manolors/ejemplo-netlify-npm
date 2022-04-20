@@ -10,6 +10,7 @@ function handleErrors(response) {
 
 async function sendDiscordWebhook(url, message) {
   console.log("sending message to " + url)
+
   try {
     fetch(url, {
       method: 'post',
@@ -29,9 +30,11 @@ async function sendDiscordWebhook(url, message) {
 const handler = async (event, payload) => {
   console.log("deploy building!")
   try {
-    await sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(event) })
-    await sendDiscordWebhook(process.env.WEBHOOK_URL, { content: JSON.stringify(process.env) })
-
+    await sendDiscordWebhook(process.env.WEBHOOK_URL, {
+      "username": "Deploy Bot Building!",
+      "avatar_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Ambox_warning_yellow.svg/1280px-Ambox_warning_yellow.svg.png",
+      "content": "The deploy has started!",
+    })
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Message sent` }),
