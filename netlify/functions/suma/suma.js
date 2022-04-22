@@ -16,7 +16,7 @@ const handler = async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ suma: a + b }),
+      body: JSON.stringify({ suma: process.env.MENSAJE + ":" + a + b }),
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,
