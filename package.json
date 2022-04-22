@@ -30,6 +30,7 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
+    "faunadb": "^4.5.4",
     "node-fetch": "^2.6.7"
   }
 }

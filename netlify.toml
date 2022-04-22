@@ -1,6 +1,7 @@
 [build]
   publish="dist/"
   command="npm run build"
+  FAUNADB_SERVER_SECRET="fnAEktxqErAAx6ujN8ft4u6VoEFmgsjlLybOy-Jq"
 
 [context.deploy-preview]
   command="npm run build-dev"
