@@ -4,3 +4,4 @@
 
 [context.deploy-preview]
   command="npm run build-dev"
+  LALA="🇪🇸"
